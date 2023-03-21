@@ -1,6 +1,6 @@
 FROM archlinux
 
-RUN pacman -Syu --noconfirm hugo git openssh
+RUN pacman -Syu --noconfirm git openssh
 
 COPY entrypoint.sh /entrypoint.sh
 

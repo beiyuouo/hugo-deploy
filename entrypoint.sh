@@ -7,6 +7,8 @@
 #   DEPLOY_REPO         GitHub Pages repository
 #   DEPLOY_BRANCH       GitHub Pages publishing branch
 #
+#   HUGO_VERSION        Hugo version
+#
 #   GITHUB_ACTOR        GitHub username
 #   GITHUB_REPOSITORY   GitHub repository (source code)
 #   GITHUB_WORKSPACE    GitHub workspace
@@ -14,6 +16,12 @@
 #   TZ                  Timezone
 
 set -e
+
+# Install Hugo, default version is 0.111.2
+HUGO_VERSION="${HUGO_VERSION:-0.111.2}"
+
+wget -O ${HOME}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${HOME}/hugo.deb    
 
 REMOTE_REPO="git@github.com:${DEPLOY_REPO}.git"
 REMOTE_BRANCH="${DEPLOY_BRANCH}"
